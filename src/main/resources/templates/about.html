@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section class="hero aboutb">
+
+		<div class="heading">
+			<h1 class="h1about text-info">About Us</h1>
+		</div>
+
+		<div class="containerb">
+			<div class="hero-content">
+
+				<h2>Welcome to our website</h2>
+
+				<p>
+					At Smart Contact Manager, we are passionate about simplifying and enhancing the way you manage your
+					contacts. Our mission is to provide you with a powerful yet user-friendly tool that streamlines your
+					contact management, enabling you to stay organized, connected, and in control.
+
+
+					<span>
+						<h3>What Sets Us Apart</h3>
+					</span>
+
+				<ul>
+
+					<li>Simplicity: We believe in keeping things simple. Our user-friendly interface ensures that you
+						can
+						start managing your contacts without a steep learning curve.<br>
+
+
+					</li>
+					<li>Privacy and Security: We take your privacy seriously. Your data is encrypted and securely
+						stored, so
+						you can trust that your contacts are in safe hands.</li>
+				</ul>
+				</p>
+
+				<a href="" th:href="@{/signup}"><button class="btn btn-primary">Register Here</button>
+				</a>
+
+			</div>
+
+			<div class="about-img">
+				<img src="" class="img-about" th:src="@{/img/wall.jpg}" alt="" />
+			</div>
+
+
+		</div>
+
+
+	</section>
+
+
+</body>
+
+</html>

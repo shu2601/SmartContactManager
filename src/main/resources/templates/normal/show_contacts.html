@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>user dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+
+<body>
+
+	<section>
+
+
+		<div class="card mr-3">
+
+			<div class="card-body table-responsive">
+<!--session-->
+<div class="container text-center">
+					<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+						<p th:text="${session.message.content}"></p>
+
+						<p th:text="${@sessionHelper.removeMessageFromSession()}"></p>
+
+					</div>
+
+<!--session end-->
+				<h1 class="text-center text-info">Your Contact</h1>
+				<table class="table table-striped ">
+					<thead>
+						<tr>
+							<th scope="col">#Id</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Phone</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c : ${contacts}">
+							<th scope="row" th:text="${'SCM2023'+c.cId}">1</th>
+							<td>
+								<img src="" class="img_pic" th:src="@{'/img/'+${c.image}}" alt="profile photo" />
+								
+								<span th:text="${c.name}"></span></td>
+								
+								
+								
+							<td>
+								<a href="" th:href="@{'/user/'+${c.cId}+'/contact'}">
+								<span th:text="${c.email}"></span></a>
+							</td>
+							
+							
+							
+							<td th:text="${c.phone}">@mdo</td>
+							<td>
+							<a href=""	th:href="@{'/user/delete/'+${c.cId}}"	<i class="fa-solid fa-trash-can btn btn-danger btn-sm"></i></a>
+								
+								<form method="post" th:action="@{'/user/update-contact/'+${c.cId}}">
+									<button type="submit" class="btn btn-primary btn-sm mt-2 "><i class="fa-solid fa-file-pen"></i></button>
+
+								</form>
+
+
+
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+				<!--pagination part-->
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+
+						<li th:if="${currentPage != 0}" class="page-item"><a
+								th:href="@{'/user/show-contact/'+${currentPage-1}}" class="page-link"
+								href="#">Previous</a></li>
+
+						<li th:classappend="${currentPage==i-1?'active':''}"
+							th:each="i : ${#numbers.sequence(1,totalPages)}" class="page-item"><a
+								th:href="@{'/user/show-contact/'+${i-1}}" class="page-link" href="#"><span
+									th:text="${i}"></span></a></li>
+
+						<li th:if="${currentPage+1 != totalPages}" class="page-item"><a
+								th:href="@{'/user/show-contact/'+${currentPage+1}}" class="page-link" href="#">Next</a>
+						</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+
+
+
+	</section>
+
+</body>
+
+</html>

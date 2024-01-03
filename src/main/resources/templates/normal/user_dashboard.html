@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>user dashboard</title>
+</head>
+
+<body>
+
+	<section class="card  d-flex justify-content-center ">
+
+		<div class="text-center card-body ">
+			
+			<div class="container mt-5">
+				<img src="" class="contact_img_pic " th:src="@{/img/loginicon.png}" alt="" />
+				
+			</div>
+			
+			<h1 class="font-weight-bold mt-4 text-color-gray shadowd">
+				
+				<span class="word">Welcome</span>
+				<span class="word" th:text="${user.name}"></span>
+				<span class="word ">Manage Your Contcts</span>
+			</h1>
+				<p class="word " >Our Smart Contact Manager is your all-in-one solution for efficient and organized contact management. Say
+				goodbye to scattered contact lists and hello to streamlined communication. </p>
+				
+				
+				
+
+			<a href="" th:href="@{/user/contact}" > <button class="btn mt-3 bg-primary btn-large text-white button-with-color-change">Add Contact</button></a>
+		
+<div class=" sidebard">
+	
+	<span><h3><a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i></a>
+	<a href="#" th:href="@{/user/show-contact/0}" class="item"><i class="fa-regular fa-address-book"></i></a></h3>
+	</span>
+	<span>
+		<h3><a href="#" th:href="@{/user/contact}" class="item"><i class="fa-solid fa-pen"></i></a>
+	<a href="#" class="item"><i class="fa-regular fa-user"></i></a></h3>
+		
+	</span>
+	<span>
+		<h3><a href="#" class="item"><i class="fa-solid fa-gear"></i></a>
+		<a href="#" th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i></a>
+	</h3>
+	</span>
+	
+</div>
+		</div>
+			
+	  	</section>
+
+</body>
+
+</html>

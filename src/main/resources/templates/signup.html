@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Signup page</title>
+</head>
+
+<body>
+
+	<section>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2 ">
+
+					<div class="my-card mt-1 shadow">
+						
+						
+							<div class="container text-center">
+								<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+    						<p th:text="${session.message.content}"></p>
+    						
+    						<p th:text="${@sessionHelper.removeMessageFromSession()}"></p>
+							
+							</div>
+							
+								</div>
+	
+						<!--register img-->
+						<div class="container text-center">
+							<img style="width: 60px;" th:src="@{img/regpic.png}"   />
+						</div>
+						
+	
+
+						<h1 class="text-center text-info">Register Here</h1>
+						<form novalidate action="" th:action="@{/do_register}" method="post" th:object="${user}">
+
+							<!--name field-->
+							<div class="mb-3">
+								<label for="name_field" class="text-center text-info" >Your Name</label>
+								
+								<input 
+								name="name"
+								type="text" 
+								class="form-control" 
+								id="name_field"
+								 th:value="${user.name}"
+								th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''"
+								aria-describedby="emailHelp"
+								placeholder="Enter Name"
+								required/>
+								
+										<div th:if="${#fields.hasErrors('name')}" class="text-danger">
+							<div th:each="error : ${#fields.errors('name')}" th:text="${error}"></div>
+						</div>
+					
+								
+							</div>
+							
+							<!--Email field   -->
+							<div class="mb-3">
+								<label for="email_field" class="text-info">Your Email</label>
+								
+								<input 
+								name="email"
+								type="email" 
+								class="form-control" 
+								id="email_field"
+								 th:value="${user.email}"
+								th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+								aria-describedby="emailHelp"
+							placeholder="Enter Email"
+								required
+								
+								/>
+								<div th:if="${#fields.hasErrors('email')}" class="text-danger">
+							<div th:each="error : ${#fields.errors('email')}" th:text="${error}"></div>
+						</div>
+								
+							</div>
+							
+								<!--Password field-->
+							<div class="mb-3">
+								<label for="password_field" class="text-info">Your Password</label>
+								
+								<input 
+								name="password"
+								type="password" 
+								class="form-control" 
+								id="password_field"
+								th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''"
+								aria-describedby="emailHelp"
+								placeholder="Enter Password"
+								required
+									
+								/>
+										<div th:if="${#fields.hasErrors('password')}" class="text-danger">
+							<div th:each="error : ${#fields.errors('password')}" th:text="${error}"></div>
+						</div>
+									
+								
+								
+							</div>
+							
+									<!--About field-->
+							<div class="form-group">
+								
+								<label for="name_field" class="text-center text-info" >Detail Description</label>
+								<textarea name="about"	value="${user.about}" placeholder="Enter somthing about yourself"   rows="4" class="form-control"></textarea>
+								
+						</div>
+							<div class="form-check ">
+									
+									<label for="agreement" class="text-info">Accept terms and conditions</label>
+									<input type="checkbox"
+									name="agreement"
+									class="form-check-input"
+									id="agreement"
+									/>
+									
+							
+								</div>
+								
+								<!--terms and condition check box-->
+								
+							
+								
+								<div class="container text-center">
+									
+									
+									
+									<button  type="submit" class="btn btn-primary  ">Submit
+									</button>
+								
+								
+									<button type="reset" class="btn btn-warning text-white  ">Reset
+									</button>
+									<div id="register-link" class="text-right text-center mt-2">
+									<a href="#" th:href="@{/signin}" class="text-info">Login here</a>
+								</div>
+								</div>
+						
+							
+							
+
+
+
+
+
+
+
+
+
+						</form>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+	</section>
+
+</body>
+
+</html>
